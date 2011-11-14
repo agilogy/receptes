@@ -16,8 +16,13 @@ App.View = (function(lng, app, undefined) {
         $('header').attr("data-title","Recepta amb id " +id);
         lng.Router.section('recipe');
     };
+
+    var edit = function() {
+    	lng.Router.section('form');
+    }
     return{
-    	recipe: recipe
+    	recipe: recipe,
+    	edit: edit
     }
 
 })(LUNGO, App);

@@ -3,9 +3,14 @@
         ring.adapter.jetty, ring.middleware.params, ring.middleware.session)
     (:require [compojure.route :as route]
             [compojure.handler :as handler]
-            [ring.adapter.jetty :as ring]))
+            [ring.adapter.jetty :as ring]
+            [receptes.controllers.auth :as auth]))
+
 (defroutes main-routes
-  (route/resources "/"))
+  (route/resources "/")
+  auth/routes
+  )
+
 
 (def app
   (handler/site main-routes))

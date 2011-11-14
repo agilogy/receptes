@@ -23,12 +23,22 @@
 </head> 
 
 <body class="app">
-    <!--
-        First, you have to do is create a LungoJS Application instance in the file app.js.
-        ...and use a Webkit browser as Chrome or Safari.
-    -->
+    <section id="login" class="splash">
+        <article>
+            <h1>Receptes</h1>
+            <div class="form">
+                <input type="text" placeholder="Type your user"/>
+                <input type="password" placeholder="Type your password"/>
+                <a id="btnLogin" href="#" data-target="section" class="button big blue" data-icon="key">Log in</a>
+            </div>
+            <div class="copyright">Copyright Agilogy, 2011</div>
+        </article>
+    </section>   
+
     <section id="recipes_view">
-        <header data-title="Receptes de cuina"></header>
+        <header data-title="Receptes de cuina">
+            <a href="#add" data-target="section" class="onright button icon add"></a>
+        </header>
         <article class="list">
             <scroll id="main_scroll">
              <ul id="recipes">
@@ -48,18 +58,50 @@
         
         <footer></footer>
     </section>
+
     <section id="recipe">
         <header data-title="">
-            <a href="#back" data-target="section" class="back onleft button icon home articblue"></a>
+            <a href="#back" data-target="section" class="back onleft button icon home"></a>
+            <h1 class="title"> Pollastre al curry </h1>
         </header>
         <article>
-            Recepta del que sigui
-
+            <div id="ingredients">
+                <h1>Ingredients</h1>
+                <ul>
+                    <li>Pollastre</li>
+                    <li>Curry</li>
+                </ul>
+            </div>
+            <div id="instruccions">
+                <h1>Instruccions</h1>
+                <p>Preparar el pollastre</p>
+                <p>Posar-li curry</p>
+            </div>
         </article>
         
         <footer></footer>
     </section>
 
+    <section id="form">
+        <header>
+            <a href="#back" data-target="section" class="back onleft button icon home"></a>
+            <h1 class="title">Afegir recepta </h1>
+        </header>
+        <article>
+            <div id="ingredients">
+                <h1>Ingredients</h1>
+                <textarea></textarea>
+            </div>
+            <div id="instruccions">
+                <h1>Instruccions</h1>
+                <textarea></textarea>
+            </div>
+            <a id="guardar" href="#recipes_view" data-target="section" class="button blue" data-icon="accept">Guardar</a> 
+            <a href="#recipes_view" data-target="section" class="button blue" data-icon="cancel">Cancel·lar</a> 
+        </article>
+        
+        <footer></footer>
+    </section>
     <!-- LungoJS (Production mode) -->
     <script src="lungo.js/lungo-1.0.1.packed.js"></script>
     <!-- LungoJS - Sandbox App -->    
