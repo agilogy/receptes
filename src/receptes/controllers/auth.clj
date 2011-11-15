@@ -5,9 +5,11 @@
             [receptes.controllers.util :as util]))
 
 (defn login [username password]
-	(= username password))
+	(if (= username password)
+		(util/json-response {:token username})
+		(util/json-response {} 403)))
 
 
 (defroutes routes
-  (POST  "/login" {params :params} (util/json-response (login (:username params) (:password params)))))
+  (POST  "/api/0.1/auth/login" {params :params} (login (:username params) (:password params))))
 

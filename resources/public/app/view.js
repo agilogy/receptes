@@ -20,9 +20,14 @@ App.View = (function(lng, app, undefined) {
     var edit = function() {
     	lng.Router.section('form');
     }
+
+    var recipe_list = function() {
+    	lng.Router.section('recipe_list');
+    }
     return{
     	recipe: recipe,
-    	edit: edit
+    	edit: edit,
+    	recipe_list: recipe_list
     }
 
 })(LUNGO, App);
