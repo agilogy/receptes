@@ -1,12 +1,13 @@
 App.Events = (function(lng, app, undefined) {
 
 	lng.Dom.Event.live('#btnLogin', 'TAP', function(event) {
-		console.log(lng.Dom.query('#username'));
 		var username=lng.Dom.query('#username').val();
 		var password=lng.Dom.query('#password').val();
 
-		App.Services.login(username, password, function() {
-			App.View.recipe_list();			
+		App.Services.Auth.login(username, password, function() {
+			App.Services.Recipes.findAll(function(){
+				App.View.recipe_list(this);
+			});
 		});
 	});
 	lng.Dom.Event.live('#recipes li', 'TAP', function(event) {

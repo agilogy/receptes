@@ -13,7 +13,6 @@ App.View = (function(lng, app, undefined) {
                 lng.Router.section('view');
             }
         });*/
-        $('header').attr("data-title","Recepta amb id " +id);
         lng.Router.section('recipe');
     };
 
@@ -21,7 +20,13 @@ App.View = (function(lng, app, undefined) {
     	lng.Router.section('form');
     }
 
-    var recipe_list = function() {
+    var recipe_list = function(recipes) {
+    	var ul = lng.Dom.query("#recipes").html('');
+    	for(index in recipes) {
+    		//<li id="1"><a href="#" data-title="Pollastre al curry"><strong>Pollastre al curry</strong></a></li>
+    		var recipe = recipes[index];
+    		ul.append('<li id="'+recipe.name+'"><a href="#"><strong>'+recipe.name+'</strong></a></li>')
+    	}
     	lng.Router.section('recipe_list');
     }
     return{

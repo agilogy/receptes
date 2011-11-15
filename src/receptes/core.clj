@@ -1,14 +1,17 @@
 (ns receptes.core
   (:use compojure.core
-        ring.adapter.jetty, ring.middleware.params, ring.middleware.session)
+        ring.adapter.jetty, ring.middleware.params, ring.middleware.session,
+        )
     (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [ring.adapter.jetty :as ring]
-            [receptes.controllers.auth :as auth]))
+            [receptes.controllers.auth :as auth]
+            [receptes.controllers.recipes :as recipes]))
 
 (defroutes main-routes
   (route/resources "/")
-  auth/routes
+   auth/routes
+   recipes/routes
   )
 
 
