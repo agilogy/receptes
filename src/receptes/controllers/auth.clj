@@ -1,13 +1,13 @@
 (ns receptes.controllers.auth
-  (:use [compojure.core :only [defroutes GET POST]])
+  (:use [compojure.core :only [defroutes GET POST]]
+	  	[receptes.controllers.util])
   (:require [clojure.string :as str]
-            [ring.util.response :as ring]
-            [receptes.controllers.util :as util]))
+            [ring.util.response :as ring]))
 
 (defn login [username password]
 	(if (= username password)
-		(util/json-response {:token username})
-		(util/json-response {} 403)))
+		(json-response {:token username})
+		(json-response {} 403)))
 
 
 (defroutes routes
