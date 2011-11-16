@@ -11,5 +11,5 @@
 
 
 (defroutes routes
-  (POST  "/api/0.1/auth/login" {params :params} (login (:username params) (:password params))))
+  (POST  "/auth/token" {params :params} (login (:username params) (:password params))))
 

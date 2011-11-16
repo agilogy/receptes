@@ -11,4 +11,4 @@
 
 
 (defroutes routes
-  (GET  "/api/0.1/recipes/find" {{token "x-auth-token"} :headers} (find-recipes token)))
+  (GET  "/recipes/" {{token "authorization"} :headers} (find-recipes token)))

@@ -1,10 +1,10 @@
 App.Services = (function(lng, app, undefined) {
 
 
-	var request = function(method, module, resource, data, callback, error ) {
+	var request = function(method, uri, data, callback, error ) {
 		$.ajax({
             type: method,
-            url: '/api/0.1/'+module+'/'+resource,
+            url: uri,
             data: data,
             dataType: 'json',
             success: function(response) {
@@ -17,7 +17,7 @@ App.Services = (function(lng, app, undefined) {
                     setTimeout(error, 100, result);
                 }
             },
-            headers: { "X-Auth-Token": localStorage["auth-token"]}
+            headers: { "Authorization": localStorage["auth-token"] || ""}
         });
 	}
 
@@ -27,7 +27,7 @@ App.Services = (function(lng, app, undefined) {
 			    username: username,
 			    password: password
 			};
-			request('POST', 'auth', 'login', data, function(response) {
+			request('POST', '/auth/token', data, function(response) {
 	    		if(response.token) { //Auth is ok
 	    			localStorage["auth-token"] = response.token;
 	    			callback.call();
@@ -41,7 +41,7 @@ App.Services = (function(lng, app, undefined) {
 
 	var Recipes = {
 		findAll: function(callback) {
-			request('GET', 'recipes', 'find', null, function(response){
+			request('GET', '/recipes/', null, function(response){
 				callback.call(response);	
 			})
 		}
