@@ -3,12 +3,20 @@
 	  	[receptes.controllers.util])
   (:require [clojure.string :as str]
             [ring.util.response :as ring]
-            [receptes.controllers.auth :as auth]))
+            [receptes.controllers.auth :as auth]
+            [receptes.models.recipes :as db]))
 
-(defn find-recipes [auth-token]
+(defn find-recipes [request]
 	(json-response [{:name "Pollastre", :ingredients "Pollastre", :instructions "Posar-hi curry"},
 	 {:name "Amanida de tomaquet", :ingredients "Tomaquet", :instructions "Posar-hi tomàquet"}]))
 
+(defn add-recipe [request]
+	(let [{name :name, ingredients :ingredients, instructions :instructions} (parameters request)
+			owner (auth-user request)]
+			(do
+				(db/add-recipe name ingredients instructions owner)
+				(json-response {:ok true}))))
 
 (defroutes routes
-  (GET  "/recipes/" {{token "authorization"} :headers} (find-recipes token)))
+  (GET   "/recipes/" [request] find-recipes)
+  (POST  "/recipes/" [request] add-recipe))

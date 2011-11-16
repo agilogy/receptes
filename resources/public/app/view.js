@@ -1,13 +1,14 @@
 App.View = (function(lng, app, undefined) {
 
-	 var recipe = function(recipe) {
+	var recipe = function(recipe) {
 	 	$("#recipe header h1").html(recipe.name);
 	 	$("#ingredients").html(recipe.ingredients);
 	 	$("#instructions").html(recipe.instructions);
         lng.Router.section('recipe');
     };
 
-    var edit = function() {
+    var edit = function(recipe) {
+        $("#form header h1").html(recipe?recipe.name:"Afegir recepta");
     	lng.Router.section('form');
     }
 
@@ -18,12 +19,12 @@ App.View = (function(lng, app, undefined) {
     		var recipe = recipes[index];
     		ul.append('<li id="recipe-'+index+'"><a href="#"><strong>'+recipe.name+'</strong></a></li>')
     	}
-    	lng.Router.section('recipe_list');
+    	lng.Router.section('recipe_list_view');
     }
     return{
+        recipe_list: recipe_list,
     	recipe: recipe,
     	edit: edit,
-    	recipe_list: recipe_list
     }
 
 })(LUNGO, App);

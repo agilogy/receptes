@@ -44,6 +44,16 @@ App.Services = (function(lng, app, undefined) {
 			request('GET', '/recipes/', null, function(response){
 				callback.call(response);	
 			})
+		},
+		addNew: function(name, ingredients, instructions, callback) {
+			var data= {
+				name: name,
+				ingredients: ingredients,
+				instructions: instructions
+			}
+			request('POST', '/recipes/', data, function(response){
+				callback.call(response);	
+			});
 		}
 	}
 	

@@ -1,5 +1,6 @@
 App.Events = (function(lng, app, undefined) {
 
+	/** Main View **/
 	lng.Dom.Event.live('#btnLogin', 'TAP', function(event) {
 		var username=lng.Dom.query('#username').val();
 		var password=lng.Dom.query('#password').val();
@@ -11,19 +12,26 @@ App.Events = (function(lng, app, undefined) {
 			});
 		});
 	});
-	lng.Dom.Event.live('#recipes li', 'TAP', function(event) {
+	/** Recipes List View **/
+	lng.Dom.Event.live('#recipe_list_view li', 'TAP', function(event) {
         var recipe_id = lng.Dom.query(this).attr('id').substring("recipe-".length);
-        console.log("About to show recipe " + recipe_id);
         var position = parseInt(recipe_id);
         App.View.recipe(App.Data.recipes[position]);
     });
 
-	lng.Dom.Event.live('#recipes_view a[href="#add"]', 'TAP', function(event) {
-        App.View.edit()
+    /** Recipe View */
+	lng.Dom.Event.live('#recipe_list_view header a', 'TAP', function(event) {
+        App.View.edit();
     });
 
 	lng.Dom.Event.live('#guardar', 'TAP', function(event) {
-        alert("guardar");
+		var name = $("#form_name").val();
+		var ingredients = $("#form_ingredients").val();
+		var instructions = $("#form_instructions").val();
+		console.log("name="+name);
+        App.Services.Recipes.addNew(name, ingredients, instructions, function(event) {
+        	App.View.recipe_list();
+        });
     });
     return {
 

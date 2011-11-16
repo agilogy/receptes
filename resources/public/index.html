@@ -35,9 +35,9 @@
         </article>
     </section>   
 
-    <section id="recipe_list">
+    <section id="recipe_list_view">
         <header data-title="Receptes de cuina">
-            <a href="#add" data-target="section" class="onright button icon add"></a>
+            <a href="#" class="onright button icon add"></a>
         </header>
         <article class="list">
             <scroll id="main_scroll">
@@ -85,16 +85,20 @@
     <section id="form">
         <header>
             <a href="#back" data-target="section" class="back onleft button icon home"></a>
-            <h1 class="title">Afegir recepta </h1>
+            <h1 class="title">Edit Form View</h1>
         </header>
         <article>
-            <div id="ingredients">
-                <h1>Ingredients</h1>
-                <textarea></textarea>
+            <div>
+                <h1>Nom</h1>
+                <input type="text" id="form_name"></input>
             </div>
-            <div id="instruccions">
+            <div>
+                <h1>Ingredients</h1>
+                <textarea id="form_ingredients"></textarea>
+            </div>
+            <div>
                 <h1>Instruccions</h1>
-                <textarea></textarea>
+                <textarea id="form_instructions"></textarea>
             </div>
             <a id="guardar" href="#recipes_view" data-target="section" class="button blue" data-icon="accept">Guardar</a> 
             <a href="#recipes_view" data-target="section" class="button blue" data-icon="cancel">Cancel·lar</a> 
