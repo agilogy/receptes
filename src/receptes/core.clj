@@ -6,6 +6,7 @@
             [compojure.handler :as handler]
             [ring.adapter.jetty :as ring]
             [receptes.controllers.auth :as auth]
+            [receptes.controllers.json :as json]
             [receptes.controllers.recipes :as recipes]))
 
 (defroutes main-routes
@@ -17,7 +18,8 @@
 
 (def app
   (-> (handler/site main-routes)
-      (auth/authorization-handling-middleware)))
+      (auth/authorization-handling-middleware)
+      (json/json-converter-middleware)))
 
 (defn -main []
   ;;(let [port (Integer/parseInt (System/getenv "PORT"))]
