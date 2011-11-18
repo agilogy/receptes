@@ -7,9 +7,8 @@
             [receptes.models.recipes :as db]))
 
 (defn find-recipes [request]
-	(response 
-	[{:name "Pollastre", :ingredients "Pollastre", :instructions "Posar-hi curry"},
-	 {:name "Amanida de tomaquet", :ingredients "Tomaquet", :instructions "Posar-hi tomàquet"}]))
+	(let [{owner :user} request]
+		(response (db/find-by-owner owner))))
 
 (defn add-recipe [request]
 	(let [	{owner :user

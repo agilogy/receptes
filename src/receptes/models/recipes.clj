@@ -13,3 +13,7 @@
 (defn add-recipe [name ingredients instructions owner]
 	(with-mongo conn
     	(insert! :recipes {:name name, :ingredients ingredients, :instructions instructions, :owner owner})))
+(defn find-by-owner [owner]
+	(with-mongo conn
+		(fetch :recipes 
+			:where {:owner owner})))

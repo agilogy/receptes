@@ -4,7 +4,7 @@
   				[compojure "0.6.4"]
                 [ring/ring-jetty-adapter "0.3.9"]
                 [ring-json-params "0.1.0"]
-                [clj-json "0.2.0"]
+                [clj-json "0.4.3"]
                 [congomongo "0.1.7"]]
    :dev-dependencies [[lein-ring "0.4.6"]]
    :ring {:handler receptes.core/app}

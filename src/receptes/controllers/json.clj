@@ -6,7 +6,8 @@
             [clj-json.core :as json]))
 
 (defn- response-body-to-json [response]
-	(assoc response :body (json/generate-string (:body response))))
+  (binding [clj-json.core/*coercions* {org.bson.types.ObjectId (fn [x] (str x))}] 
+	 (assoc response :body (json/generate-string (:body response)))))
 
 (defn json-converter-middleware [app]
   (fn [req]
