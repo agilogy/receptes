@@ -8,7 +8,7 @@
                             :host "dbh76.mongolab.com"
                             :port 27767))
 
-(authenticate conn XXXXXX XXXXXXX)
+(authenticate conn "receptes" "r3c3p1es")
 
 (defn add-recipe [name ingredients instructions owner]
 	(with-mongo conn

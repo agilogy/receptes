@@ -16,7 +16,8 @@
 
 
 (def app
-  (handler/site main-routes))
+  (-> (handler/site main-routes)
+      (auth/authorization-handling-middleware)))
 
 (defn -main []
   ;;(let [port (Integer/parseInt (System/getenv "PORT"))]

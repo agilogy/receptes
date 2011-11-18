@@ -11,8 +11,8 @@
 	 {:name "Amanida de tomaquet", :ingredients "Tomaquet", :instructions "Posar-hi tomàquet"}]))
 
 (defn add-recipe [request]
-	(let [{name :name, ingredients :ingredients, instructions :instructions} (parameters request)
-			owner (auth-user request)]
+	(let [	{owner :user
+			{name :name, ingredients :ingredients, instructions :instructions} :params} request]
 			(do
 				(db/add-recipe name ingredients instructions owner)
 				(json-response {:ok true}))))
