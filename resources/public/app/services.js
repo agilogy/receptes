@@ -42,6 +42,7 @@ App.Services = (function(lng, app, undefined) {
 	var Recipes = {
 		findAll: function(callback) {
 			request('GET', '/recipes/', null, function(response){
+				App.Data.recipes = response;
 				callback.call(response);	
 			})
 		},
@@ -54,6 +55,12 @@ App.Services = (function(lng, app, undefined) {
 			request('POST', '/recipes/', data, function(response){
 				callback.call(response);	
 			});
+		},
+		delete: function(recipe, callback) {
+			//App.Data.recipes.remove({_id:recipe._id})
+			request('DELETE', '/recipes/'+recipe._id, function(response) {
+				callback.call(response);
+			})
 		}
 	}
 	

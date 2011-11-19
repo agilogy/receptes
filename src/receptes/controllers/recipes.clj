@@ -1,5 +1,5 @@
  (ns receptes.controllers.recipes
-  (:use [compojure.core :only [defroutes GET POST]]
+  (:use [compojure.core :only [defroutes GET POST DELETE]]
 	  	[receptes.controllers.util]
 	  	[ring.util.response :only [response status]])
   (:require [clojure.string :as str]
@@ -17,6 +17,11 @@
 				(db/add-recipe name ingredients instructions owner)
 				{:ok true, :owner owner})))
 
+(defn delete-recipe [id]
+	(db/delete-recipe id)
+	(response {:ok true}))
+
 (defroutes routes
   (GET   "/recipes/" [request] find-recipes)
-  (POST  "/recipes/" [request] add-recipe))
+  (POST  "/recipes/" [request] add-recipe)
+  (DELETE  "/recipes/:id" [id] (delete-recipe id)))
