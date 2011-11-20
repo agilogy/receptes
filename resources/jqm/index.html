@@ -1,6 +1,51 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Demos and Documentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet"  href="jquery.mobile-1.0/jquery.mobile-1.0.css" />
+	<script src="jquery.mobile-1.0/jquery.js"></script>
+	<script src="jquery.mobile-1.0/jquery.mobile-1.0.js"></script>
+	<script src="app/app.js"> </script>
+</head>
 <body>
-	Hola
+	<section id="loginView" data-role="page">
+		<article data-role="content">
+            <h1>Receptes</h1>
+            <div class="form">
+                <input type="text" placeholder="Type your user"/>
+                <input type="password" placeholder="Type your password"/>
+                <a href="#recipeListView" data-role="button" data-icon="star">Log in</a>
+            </div>
+            <div class="copyright">Copyright Agilogy, 2011</div>
+        </article>
+	</section>
+	<section id="recipeListView" data-role="page">
+        <header data-role="header">
+            <h1>Receptes</h1>
+        </header>
+        <article data-role="content">
+             <ul id="recipeList" data-role="listview" data-inset="true" data-filter="true">
+             </ul>
+        </article>
+        <footer></footer>
+    </section>
+    <section id="recipeView" data-role="page">
+		<header data-role="header">
+		    <h1>Receptes</h1>
+            <a href="#recipeListView" data-rel="back" data-icon="back">Back </a>
+        </header>
+    	<article data-role="content">
+    		<h2>Ingredients</h2>
+    		<span class="ingredients">
+    			... ingredients de la recepta
+    		</span>
+    		<h2>Instruccions</h2>
+    		<span class="instruccions">
+    		</span>
+    	<article>
+    </section>
 </body>
-</html>
